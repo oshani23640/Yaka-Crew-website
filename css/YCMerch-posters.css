@@ -1,0 +1,283 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.frame {
+  padding: 40px;
+}
+
+.logo-img {
+  width: 130px;
+  border-radius: 10px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5em;
+  color: rgb(82, 76, 43);
+  margin-bottom: 40px;
+  border-bottom: 2px solid gold;
+  padding-bottom: 10px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding: 20px;
+  width: 260px;
+  text-align: center;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  transform: scale(1.03);
+}
+
+.thumb {
+  height: 260px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .thumb img {
+  transform: scale(1.1);
+}
+
+.tshirt-name {
+  color: gold;
+  font-size: 20px;
+  margin: 10px 0 5px 0;
+}
+
+.caption {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.details-btn {
+  background: gold;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.details-btn:hover {
+  background: goldenrod;
+  color: #000;
+  box-shadow: 0 0 10px goldenrod;
+}
+
+
+
+.price {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #00ff99;
+  font-size: 16px;
+}
+
+.price {
+  display: block;
+  margin-bottom: 12px; /* adds space below the price */
+  font-weight: bold;
+  color: #ccc;
+}
+
+.details-btn {
+  background-color: #000;
+  color: white;
+  border: 1px solid #444;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.details-btn:hover {
+  background-color: #444;
+}
+
+
+body {
+  margin: 0;
+  font-family:'Orbitron', sans-serif ;
+  background-color: #000000;
+  color: white;
+  padding-top: 80px; /* Add space for fixed navbar */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: 300px;
+  gap: 40px;
+  position: relative;
+}
+
+.nav-links > li {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+.nav-links > li:hover {
+  border-bottom: 2px solid white;
+}
+
+.nav-links > li.active {
+  border-bottom: 2px solid white;
+}
+
+/* Dropdown */
+.gallery-dropdown {
+  position: relative;
+}
+
+.arrow {
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
+.gallery-dropdown:hover .dropdown,
+.gallery-dropdown.active .dropdown {
+  display: block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #222;
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 120px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  list-style: none; /* Remove bullet points */
+}
+
+.dropdown li {
+  padding: 8px 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  list-style: none; /* Remove bullet points from list items */
+}
+
+.dropdown li:hover {
+  background-color: #333;
+}
+
+.dropdown li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown li a:hover {
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+/*navigation bar*/
+nav a {
+  color: #ffffff;         /* or your desired color like others */
+  text-decoration: none;  /* removes underline */
+  font-family: 'Orbitron', sans-serif; /* same font as others */
+  padding: 10px 20px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #956E2F; /* hover color (optional, matching others) */
+}
+.merch-link,
+.merch-link:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+nav a:visited {
+  color: #ffffff;
+}
+
+
+li a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+li a:hover {
+  text-decoration: underline;
+}

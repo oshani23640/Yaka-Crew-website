@@ -1,0 +1,166 @@
+
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+}
+.color-swatch:hover {
+  opacity: 0.8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background-color: #111;
+  flex-wrap: wrap;
+}
+
+
+
+
+/* Global */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #202221;
+  color: white;
+  padding-top: 80px; /* Add space for fixed navbar */
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: 300px;
+  gap: 40px;
+  position: relative;
+}
+
+.nav-links > li {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+.nav-links > li:hover {
+  border-bottom: 2px solid white;
+}
+
+.nav-links > li.active {
+  border-bottom: 2px solid white;
+}
+
+/* Single underline fix: keep underline on <li>, never on <a> (prevents double lines) */
+.nav-links > li > a,
+.nav-links > li > a:link,
+.nav-links > li > a:visited,
+.nav-links > li > a:hover,
+.nav-links > li > a:focus,
+.nav-links > li > a.active {
+  color: #fff !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Keep underline only from these rules */
+.nav-links > li:hover,
+.nav-links > li.active {
+  border-bottom: 2px solid #fff;
+}
+
+
+/* Dropdown */
+.gallery-dropdown {
+  position: relative;
+}
+
+.arrow {
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
+.gallery-dropdown:hover .dropdown,
+.gallery-dropdown.active .dropdown {
+  display: block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #222;
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 120px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  list-style: none; /* Remove bullet points */
+}
+
+.dropdown li {
+  padding: 8px 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  list-style: none; /* Remove bullet points from list items */
+}
+
+.dropdown li:hover {
+  background-color: #333;
+}
+
+.dropdown li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown li a:hover {
+  color: white;
+}

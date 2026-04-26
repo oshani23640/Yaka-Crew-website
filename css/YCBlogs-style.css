@@ -1,0 +1,202 @@
+
+/* Global Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #B68B4B;
+}
+
+a:hover {
+    color: #956E2F;
+}
+
+/* Push content down so it's not hidden behind navbar */
+.history-intro {
+    margin-top: 100px;  /* Ensures it's below the fixed navbar */
+    text-align: center;
+    padding: 20px;
+}
+.history-intro p {
+  text-align: left;
+  line-height: 1.8; /* better readability */
+  max-width: 900px; /* optional: keeps it from stretching too wide */
+  margin: 0 auto;   /* center the block while keeping text left-aligned */
+}
+
+
+header h1 {
+    margin: 0;
+    padding: 10px 0;
+    font-size: 36px;
+    color: white;
+}
+
+header {
+    background-color: #000000;
+    padding: 40px;
+    text-align: center;
+    border-bottom: 2px solid #654922;
+}
+
+.h1 {
+    margin: 0;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+}
+
+
+
+.blog-section {
+  padding: 40px;
+}
+
+.blog-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 30px;
+  padding: 20px;
+}
+
+
+/* Blog Card */
+.blog-card {
+    background-color:  #0a0a0a;
+    border-left: 10px solid #654922;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card h2 {
+    margin-top: 0;
+    color: #B68B4B;
+    
+
+}
+
+.blog-card h1{
+      text-align: left;
+
+}
+
+.blog-card p {
+    line-height: 1.6;
+    color: #dddddd;
+    text-align: left;
+}
+
+/* Read More Hover */
+.read-more {
+    display: none;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #654922;
+    color: #dddddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    
+}
+
+.blog-card:hover .read-more {
+    display: inline-block;
+    background-color: #654922;
+    color: white; /* Make sure text is dark and readable */
+
+}
+
+/* See All / See Less */
+#toggle-btn {
+    display: block;
+    margin: 0 auto 40px auto;
+    padding: 10px 20px;
+    background-color: #654922;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#toggle-btn:hover {
+    background-color: #956E2F;
+}
+
+
+
+/* Post Page */
+.post-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #0a0a0a;
+    border-left: 6px solid #956E2F;
+    border-radius: 8px;
+}
+.post-container img {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.post-container h2 {
+    color: #B68B4B;
+    margin-top: 0;
+}
+
+.post-container p {
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+
+/* Image Slider */
+.image-slider {
+  position: relative;
+  max-width: 900px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image-slider .slides {
+  display: flex;
+  /* smooth, premium easing */
+  transition: transform 800ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+.image-slider .slide {
+  flex: 0 0 100%; /* exactly one slide per view */
+}
+
+.image-slider img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}

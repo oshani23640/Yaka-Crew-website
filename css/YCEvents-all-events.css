@@ -1,0 +1,259 @@
+/* Additional styles specific to all-events page */
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #000 !important;
+  background: #000 !important;
+  padding: 10px 20px;
+  box-shadow: none;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: 300px;
+  gap: 40px;
+  position: relative;
+}
+
+.nav-links > li {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links > li:hover {
+  border-bottom: 2px solid white;
+  color: white;
+}
+
+.nav-links > li.active {
+  border-bottom: 2px solid white;
+  color: white;
+}
+
+/* Remove default underline from top-level nav anchors (e.g., Events) */
+.nav-links > li > a,
+.nav-links > li > a:hover,
+.nav-links > li > a:focus,
+.nav-links > li > a:active {
+  text-decoration: none !important;
+  color: white;
+}
+
+/* Specifically target Blogs to ensure no yellow underline */
+.nav-links > li:nth-child(3) {
+  border-bottom: 2px solid transparent !important;
+}
+
+.nav-links > li:nth-child(3):hover {
+  border-bottom: 2px solid white !important;
+}
+
+/* Remove persistent underline from Events (5th item) but keep hover underline */
+.nav-links > li:nth-child(5) {
+  border-bottom: 2px solid transparent !important; /* default state: no underline */
+}
+
+/* Keep Events non-active by default; hover will still apply from generic rule above */
+.nav-links > li:nth-child(5).active {
+  border-bottom: 2px solid transparent !important;
+}
+
+/* Ensure hover underline shows for Events even with the default !important above */
+.nav-links > li:nth-child(5):hover {
+  border-bottom: 2px solid white !important;
+}
+
+/* Override any potential yellow styling from other stylesheets */
+.nav-links > li * {
+  border-color: white !important;
+  color: white !important;
+}
+
+.nav-links > li:hover * {
+  border-color: white !important;
+  color: white !important;
+}
+
+/* Dropdown */
+.gallery-dropdown {
+  position: relative;
+}
+
+.arrow {
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
+.gallery-dropdown:hover .dropdown,
+.gallery-dropdown.active .dropdown {
+  display: block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #222;
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 120px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  list-style: none; /* Remove bullet points */
+}
+
+.dropdown li {
+  padding: 8px 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  list-style: none; /* Remove bullet points from list items */
+}
+
+.dropdown li:hover {
+  background-color: #333;
+}
+
+.dropdown li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown li a:hover {
+  color: white;
+}
+    .all-events-hero {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                       url('../assets/images/image6.JPG');
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 70px;
+    }
+    
+    .all-events-hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .all-events-hero-content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    
+    .events-filter {
+      background-color: #0000;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      border-radius: var(--border-radius);
+    }
+    
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .filter-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .filter-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .filter-group select,
+    .filter-group input {
+      width: 100%;
+      padding: 10px 15px;
+      background-color: #2a2929;
+      border: none;
+      border-radius: var(--border-radius);
+      color: white;
+    }
+    
+    .filter-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    
+    .events-timeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .timeline-month {
+      margin-bottom: 3rem;
+    }
+    
+    .timeline-month h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-color);
+    }
+    
+    .timeline-events {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .past-events {
+      opacity: 0.7;
+    }
+    
+    .past-events .event-date {
+      background-color: var(--medium-gray);
+    }
+    
+    .no-events {
+      text-align: center;
+      padding: 3rem;
+      color: var(--dark-gray);
+      font-size: 1.2rem;
+    }
+
+    /* Color-only overrides: apply YCPosts gradient theme to cards (no layout change) */
+    .event-card {
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    }
+
+    /* In case shared components appear on this page */
+    .upcoming-event {
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    }

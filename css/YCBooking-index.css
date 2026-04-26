@@ -1,0 +1,262 @@
+/* Make calendar and clock icons white for date and time inputs */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+	opacity: 1;
+}
+input[type="date"]::-webkit-input-placeholder,
+input[type="time"]::-webkit-input-placeholder {
+	color: #fff;
+}
+input[type="date"]::-moz-placeholder,
+input[type="time"]::-moz-placeholder {
+	color: #fff;
+}
+input[type="date"]:-ms-input-placeholder,
+input[type="time"]:-ms-input-placeholder {
+	color: #fff;
+}
+input[type="date"]::placeholder,
+input[type="time"]::placeholder {
+	color: #fff;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: white;
+  padding-top: 80px; /* Add space for fixed navbar */
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: 300px;
+  gap: 40px;
+  position: relative;
+}
+
+.nav-links > li {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+.nav-links > li:hover {
+  border-bottom: 2px solid white;
+}
+
+.nav-links > li.active {
+  border-bottom: 2px solid white;
+}
+
+/* Single underline fix: keep underline on <li>, never on <a> (prevents double lines) */
+.nav-links > li > a,
+.nav-links > li > a:link,
+.nav-links > li > a:visited,
+.nav-links > li > a:hover,
+.nav-links > li > a:focus,
+.nav-links > li > a.active {
+  color: #fff !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Keep underline only from these rules */
+.nav-links > li:hover,
+.nav-links > li.active {
+  border-bottom: 2px solid #fff;
+}
+
+
+/* Dropdown */
+.gallery-dropdown {
+  position: relative;
+}
+
+.arrow {
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
+.gallery-dropdown:hover .dropdown,
+.gallery-dropdown.active .dropdown {
+  display: block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #222;
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 120px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  list-style: none; /* Remove bullet points */
+}
+
+.dropdown li {
+  padding: 8px 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  list-style: none; /* Remove bullet points from list items */
+}
+
+.dropdown li:hover {
+  background-color: #333;
+}
+
+.dropdown li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown li a:hover {
+  color: white;
+}
+
+.container {
+	max-width: 900px;
+	margin: 110px auto 60px auto;
+	background: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+}
+.booking-section {
+	display: flex;
+	gap: 40px;
+	background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+	border-radius: 18px;
+	padding: 40px 32px 32px 32px;
+	box-shadow: 0 4px 32px #000a;
+}
+.form-box, .summary-box {
+	background: #0000;
+	border-radius: 16px;
+	padding: 32px 28px;
+	min-width: 340px;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+.form-box label {
+	font-size: 0.98em;
+	margin-bottom: 4px;
+	color: #fff;
+}
+.form-box input, .form-box textarea, .form-box select {
+	background: #000000;
+	border: 2px solid #654922;
+	border-radius: 6px;
+	color: #fff;
+	padding: 8px 10px;
+	font-size: 1em;
+	margin-bottom: 10px;
+}
+.form-box input[type="checkbox"] {
+	width: auto;
+	margin-right: 8px;
+}
+.form-box button {
+	background: #654922;
+	color: white;
+	font-weight: 700;
+	border: none;
+	border-radius: 6px;
+	padding: 12px 0;
+	font-size: 1.1em;
+	margin-top: 10px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.form-box button:hover {
+	background: #654922;
+}
+.summary-box {
+	min-width: 320px;
+	background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+}
+.summary-title {
+	color: #654922;
+	font-size: 1.3em;
+	font-weight: 700;
+	margin-bottom: 18px;
+	text-align: center;
+}
+.summary-list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-bottom: 16px;
+}
+.summary-list span {
+	color: #fff;
+	font-weight: 500;
+}
+
+.summary-value {
+	display: inline-block;
+	min-width: 80px;
+	background: rgba(255,255,255,0.08);
+	border: 1.5px solid rgba(101,73,34,0.25);
+	border-radius: 7px;
+	color: #fff;
+	padding: 4px 16px;
+	margin-left: 10px;
+	font-weight: 500;
+	font-size: 1em;
+	letter-spacing: 0.5px;
+	transition: background 0.2s, border 0.2s;
+}
+.summary-list label {
+	color: #654922;
+	font-weight: 700;
+	margin-right: 8px;
+}
+.summary-note {
+	color: #654922;
+	font-size: 0.95em;
+	text-align: center;
+	margin-top: 10px;
+}
+.title {
+	color: white;
+	font-size: 2em;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 36px;
+}
+

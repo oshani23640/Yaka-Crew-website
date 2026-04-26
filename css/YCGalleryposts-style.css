@@ -1,0 +1,578 @@
+/* Global */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #000 !important;
+  background: #000 !important;
+  padding: 10px 20px;
+  box-shadow: none;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: 300px;
+  gap: 40px;
+  position: relative;
+}
+
+.nav-links > li {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links > li:hover {
+  border-bottom: 2px solid white;
+  color: white;
+}
+
+.nav-links > li.active {
+  border-bottom: 2px solid white;
+  color: white;
+}
+
+/* Remove default underline from top-level nav anchors (e.g., Events) */
+.nav-links > li > a,
+.nav-links > li > a:hover,
+.nav-links > li > a:focus,
+.nav-links > li > a:active {
+  text-decoration: none !important;
+  color: white;
+}
+
+/* Specifically target Blogs to ensure no yellow underline */
+.nav-links > li:nth-child(3) {
+  border-bottom: 2px solid transparent !important;
+}
+
+.nav-links > li:nth-child(3):hover {
+  border-bottom: 2px solid white !important;
+}
+
+/* Remove persistent underline from Events (5th item) but keep hover underline */
+.nav-links > li:nth-child(5) {
+  border-bottom: 2px solid transparent !important; /* default state: no underline */
+}
+
+/* Keep Events non-active by default; hover will still apply from generic rule above */
+.nav-links > li:nth-child(5).active {
+  border-bottom: 2px solid transparent !important;
+}
+
+/* Ensure hover underline shows for Events even with the default !important above */
+.nav-links > li:nth-child(5):hover {
+  border-bottom: 2px solid white !important;
+}
+
+/* Override any potential yellow styling from other stylesheets */
+.nav-links > li * {
+  border-color: white !important;
+  color: white !important;
+}
+
+.nav-links > li:hover * {
+  border-color: white !important;
+  color: white !important;
+}
+
+/* Dropdown */
+.gallery-dropdown {
+  position: relative;
+}
+
+.arrow {
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-dropdown.active .arrow {
+  transform: rotate(180deg);
+}
+
+.gallery-dropdown:hover .dropdown,
+.gallery-dropdown.active .dropdown {
+  display: block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #222;
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 120px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  list-style: none; /* Remove bullet points */
+}
+
+.dropdown li {
+  padding: 8px 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  list-style: none; /* Remove bullet points from list items */
+}
+
+.dropdown li:hover {
+  background-color: #333;
+}
+
+.dropdown li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown li a:hover {
+  color: white;
+}
+
+/* Main Content */
+.main-content {
+  padding: 40px 20px 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Posts Header */
+.posts-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 30px 0;
+}
+
+.posts-header h1 {
+  color: white;
+  font-size: 42px;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Event Gallery Masonry Layout */
+
+/* Modern responsive card grid: auto-fit cards with consistent image area */
+.event-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-auto-rows: auto;
+  gap: 20px;
+  margin-top: 30px;
+  width: 100%;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(8,8,8,0.6), rgba(14,14,14,0.6));
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  isolation: isolate;
+}
+
+/* Make each old tile class behave like a card with a fixed-aspect image area */
+.event-gallery-grid > * {
+  background: linear-gradient(180deg, #111111 0%, #151515 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.32s cubic-bezier(.2,.8,.2,1), box-shadow 0.32s, border-color 0.32s;
+  cursor: pointer;
+}
+
+.event-gallery-grid > *:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 26px 60px rgba(6, 8, 15, 0.65);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Create a consistent image area using padding-top for aspect ratio */
+.event-gallery-grid > * {
+  position: relative;
+}
+
+.event-gallery-grid > *::before {
+  /* This pseudo-element reserves space for the image area (16:9) */
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 ratio */
+}
+
+/* Position the <img> absolutely to cover the reserved area */
+.event-gallery-grid img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover gives the most attractive card look */
+  object-position: center center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1), filter 0.35s ease;
+}
+
+/* gentle zoom effect on hover for images */
+.event-gallery-grid > *:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.06) contrast(1.02);
+}
+
+/* Keep the existing overlay but make it appear as a bottom caption */
+.image-hover-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 16px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.64) 100%);
+  color: white;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 280ms ease, transform 280ms ease;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.event-gallery-grid > *:hover .image-hover-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.image-hover-overlay h3 {
+  color: #ffdca8;
+  font-size: 16px;
+  margin: 0;
+}
+
+.image-hover-overlay p {
+  color: #d1d1d1;
+  font-size: 13px;
+  margin: 0;
+}
+
+.event-meta {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 12;
+  background: rgba(0,0,0,0.45);
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.event-gallery-grid .large-image-left {
+  /* allow this item to visually stand out on wide screens */
+  grid-column: span 2;
+}
+
+.large-image-left:hover {
+  transform: none;
+  box-shadow: 0 15px 30px rgba(101, 73, 34, 0.3);
+}
+
+.large-image-left img {
+  /* Fill the card area edge-to-edge to avoid visible side bars */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.large-image-left:hover img {
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.small-images-right {
+  grid-column: span 1;
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.small-images-right .image-container {
+  flex: 1;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.small-images-right .image-container:hover {
+  transform: none;
+  box-shadow: 0 10px 20px rgba(101, 73, 34, 0.3);
+}
+
+.small-images-right .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.small-images-left {
+  grid-column: span 1;
+  grid-row: span 1;
+  display: flex;
+  gap: 0;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.small-images-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 0.3s ease;
+}
+
+.small-images-left:hover {
+  transform: none;
+  box-shadow: 0 10px 20px rgba(101, 73, 34, 0.3);
+}
+
+.medium-image {
+  grid-column: span 1;
+  grid-row: span 2;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.medium-image:hover {
+  transform: none;
+  box-shadow: 0 12px 25px rgba(101, 73, 34, 0.3);
+}
+
+.medium-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 0.3s ease;
+}
+
+.wide-image {
+  grid-column: span 2;
+  grid-row: span 1;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.wide-image:hover {
+  transform: none;
+  box-shadow: 0 10px 20px rgba(101, 73, 34, 0.3);
+}
+
+.wide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 0.3s ease;
+}
+
+/* Defensive gallery rules to hide any page background bleed and provide
+   a soft tile backdrop when images have transparent areas or slightly
+   different aspect ratios during load. This prevents visible black/white
+   bars at the sides. */
+.event-gallery-grid .large-image-left,
+.event-gallery-grid .medium-image,
+.event-gallery-grid .wide-image,
+.event-gallery-grid .small-images-left,
+.event-gallery-grid .image-container {
+  /* Neutral, slightly textured background so 'contain' letterboxes look
+     intentional and not like site background or harsh bars */
+  background: linear-gradient(180deg, #0b0b0b 0%, #141414 100%);
+  -webkit-backface-visibility: hidden; /* reduce rendering artifacts */
+  backface-visibility: hidden;
+}
+
+/* Smooth rounded corners and subtle lift on hover */
+.event-gallery-grid .large-image-left,
+.event-gallery-grid .medium-image,
+.event-gallery-grid .wide-image,
+.event-gallery-grid .small-images-left,
+.event-gallery-grid .image-container {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Small tweak for images that may be loaded from external sources where
+   the browser can briefly show the natural background — ensure the <img>
+   sits flush and covers the tile. */
+.event-gallery-grid > * {
+  /* keep background subtle but not pure black to avoid strong contrast
+    if any tiny gaps appear while images load */
+  background: linear-gradient(180deg, #111111 0%, #151515 100%);
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* If an image has transparent edges, the tile background will show
+     through instead of page background. */
+  background-color: transparent;
+}
+
+/* Image Hover Overlay Styles */
+.image-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(60, 60, 60, 0.8));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10;
+  border-radius: inherit;
+}
+
+.large-image-left:hover .image-hover-overlay,
+.medium-image:hover .image-hover-overlay,
+.wide-image:hover .image-hover-overlay,
+.small-images-left:hover .image-hover-overlay,
+.image-container:hover .image-hover-overlay {
+  opacity: 1;
+}
+
+.image-hover-overlay h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #654922;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.image-hover-overlay p {
+  margin: 0;
+  font-size: 14px;
+  color: #cccccc;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure relative positioning for all image containers */
+.large-image-left,
+.medium-image,
+.wide-image,
+.small-images-left,
+.image-container {
+  position: relative;
+  z-index: 1;
+}
+
+.large-image-left:hover,
+.medium-image:hover,
+.wide-image:hover,
+.small-images-left:hover,
+.image-container:hover {
+  z-index: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .event-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 100px;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .posts-header h1 {
+    font-size: 32px;
+  }
+  
+  .large-image-left {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .small-images-right {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  
+  .medium-image {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  
+  .wide-image {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  
+  .small-images-left {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 150px;
+  }
+  
+  .large-image-left,
+  .small-images-right,
+  .medium-image,
+  .wide-image,
+  .small-images-left {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .posts-header h1 {
+    font-size: 28px;
+  }
+}

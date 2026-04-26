@@ -1,0 +1,35 @@
+/* Yaka Crew Band - Footer Styles */
+.site-footer {
+  background: #000;
+  color: #fff;
+  padding: 10px 0 4px 0;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 -2px 16px 0 rgba(0,0,0,0.12);
+}
+.site-footer .footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.site-footer .footer-content p {
+  margin: 0 0 4px 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 1.05em;
+  text-shadow: 0 1px 4px #000a;
+}
+.site-footer .footer-content p:last-child {
+  margin-bottom: 0;
+  font-size: 1em;
+  color: #654922;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 4px #0006;
+}
+.site-footer .footer-content span {
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg,#654922 40%,#a88b5b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
